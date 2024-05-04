@@ -1,53 +1,8 @@
-<html>
-
-<head>
-    <title> Um pouco de CSS </title>
-    <style>
-        h1 {
-            position: absolute;
-            top: 500px;
-            left: 500px;
-            background-color: rgb(119, 9, 104);
-            font-size: 100px;
-        }
-
-        span {
-            background-color: blueviolet;
-        }
-
-        span {
-            color: aliceblue;
-        }
-
-        .fundoVermelho {
-            background-color: red;
-        }
-
-        .negrito {
-            font-weight: bold;
-            color: rgb(2, 0, 139)
-        }
-
-        #textoPrincipal {
-            font-size: 40px;
-            font-weight: bold;
-            color: white;
-            padding: 10px;
-            background-color: #444;
-            margin-bottom: 50px;
-        }
-    </style>
-</head>
-
-<body>
-    <style>
-
-    </style>
-    <h1>CSS</h1>
-    <span id="textoPrincipal">Texto 1</span> <br> <br> <br>
-    <!-- BR PARA QUEBRAR LINHA // NÃO USADO TANTO-->
-    <span class="fundoVermelho negrito">Texto 2</span><br> <br>
-    <span class="fundoVermelho">Texto 3</span>
-</body>
-
-</html>
+#textoPrincipal {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    background-color: #444;
+    margin-bottom: 50px;
+}
