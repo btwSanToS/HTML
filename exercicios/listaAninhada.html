@@ -1,38 +1,67 @@
-<h1>Projeto</h1>
-<ul class="tree">
-    <li>
-        Backend
-        <ul>
-            <li>
-                App
-                <ul>
-                    <li>Produto.JS</li>
-                    <li>Usuário.JS</li>
-                    <li>Venda.JS</li>
-                </ul>
-            </li>
-            <li>config</li>
-            <ul>
-                <li>Banco.JS</li>
-                <li>Rotas.JS</li>
-                <li>Servidor.JS</li>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+    <title>Projeto Aula Lista</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Projeto</h1>
+    <ul class="tree">
+        <li class="expandable">
+            Backend
+            <ul class="hidden">
+                <li class="expandable">
+                    App
+                    <ul class="hidden">
+                        <li>Produto.JS</li>
+                        <li>Usuário.JS</li>
+                        <li>Venda.JS</li>
+                    </ul>
+                </li>
+                <li class="expandable">
+                    Config
+                    <ul class="hidden">
+                        <li>Banco.JS</li>
+                        <li>Rotas.JS</li>
+                        <li>Servidor.JS</li>
+                    </ul>
+                </li>
             </ul>
-        </ul>
-    </li>
-    <li>FrontEnd
-        <ul>
-            <li>
-                Public
-                <ul>
-                    <li>App.CSS</li>
-                    <li>App.JS</li>
-                    <li>index.HTML</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
-<script>
-    console.log("Árvore...")
-</script>
+        </li>
+        <li class="expandable">
+            FrontEnd
+            <ul class="hidden">
+                <li class="expandable">
+                    Public
+                    <ul class="hidden">
+                        <li>App.CSS</li>
+                        <li>App.JS</li>
+                        <li>index.HTML</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        document.querySelectorAll('.expandable').forEach(item => {
+            item.addEventListener('click', function (event) {
+                const ulChildren = this.querySelector('ul');
+                if (ulChildren && event.target === this) {
+                    ulChildren.classList.toggle('hidden');
+                }
+                event.stopPropagation();
+            });
+        });
+    </script>
+</body>
+
+</html>
