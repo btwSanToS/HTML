@@ -1,0 +1,63 @@
+<table>
+    <!-- Border="x" irá criar uma borda personalizável e fixa para o código -->
+    <caption><b>Produtos</b></caption>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>iPad</td>
+            <td>3289,90</td>
+            <td>5</td>
+            <td>16449,5</td>
+        </tr>
+        <tr>
+            <td>Samsung S9</td>
+            <td>2649,00</td>
+            <td>8</td>
+            <td>21192,00</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <!-- COLSPAN selecionará a quantidade de colunas desejadas -->
+            <!-- ROWSPAN irá mesclar as linhas desejadas  rowspan="2" -->
+            <td colspan="3">Total</td>
+            <td>37367,00</td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    thead tr {
+        border-bottom: solid 3px #444444;
+    }
+
+    tbody tr:hover {
+        background-color: #dedede;
+    }
+
+    tbody td:hover {
+        background-color: #b6b6b6;
+    }
+
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: boldS;
+    }
+</style>
