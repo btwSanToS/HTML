@@ -1,32 +1,33 @@
-<p>
-    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Mar" width="513" height="342"
-        title="Mar e Céu Azul">
-</p>
+<div as-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Mar" width="513" height="342"
+            title="Mar e Céu Azul">
+    </p>
 
-<p>
-    <img src="http://gifgifs.com/animations/animals/dogs/pitbull.gif" alt="Pit-Bull" height="250">
+    <p>
+        <img src="http://gifgifs.com/animations/animals/dogs/pitbull.gif" alt="Pit-Bull" height="250">
 
-</p>
+    </p>
 
-<p class="circular">
-    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342">
-</p>
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
 
-<p class="texto">
-    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="avatar" height="50" align="center">
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="avatar" height="50" align="center">
 
-    Texto blakafja ojbojaopfja jobpjafopjfaf ehwitohwrio dfin
+        Texto blakafja ojbojaopfja jobpjafopjfaf ehwitohwrio dfin
 
-</p>
+    </p>
+
+</div>
+
 
 <p class="cidade">
-<p>
     <picture>
-        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
-        media="(min-width: 600px)">
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width: 600px)">
         <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
     </picture>
-</p>
 </p>
 
 <style>
@@ -51,4 +52,52 @@
         background-repeat: no-repeat;
         background-size: 200%;
     }
+
+    p {
+        position: absolute;
+        display: none;
+    }
 </style>
+
+<script>
+    function mover(element, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if (novoInicio >= fim) {
+            element.style.left = novoInicio + 'px'
+            setTimeout(() => mover(element, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback()
+        }
+    }
+    // const p = document.querySelector('[as-slider] > p')
+    // p.style.display = 'block'
+    // mover(p, 1500, -520, 5, () => {
+    //     console.log('Terminou!!!')
+    // })
+
+    function slider() {
+        const elementos = document.querySelectorAll('[as-slider] > p')
+        const slides = Array.from(elementos)
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+        const inicio = innerWidth
+        const fim = -slide.clientWidth
+
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+
+    }
+    slider()
+</script>
