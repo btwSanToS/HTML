@@ -6,9 +6,9 @@
 <div as-progresso="meuVideo" class="progresso">
     <div></div>
 </div>
-<div class="btn">
-    <button id="playBtn" as-play="meuVideo">Play</button>
-    <button id="pauseBtn" as-pause="meuVideo">Pause</button>
+<div>
+    <button as-play="meuVideo">Play</button>
+    <button as-pause="meuVideo">Pause</button>
 </div>
 <style>
     .progresso {
@@ -24,27 +24,23 @@
         height: 100%;
         text-align: center;
         font-size: 14px;
-        width: 30%;
+        width: 0%;
     }
 </style>
 
 <script>
-    const video = document.getElementById('meuVideo');
-    const playBtn = document.getElementById('playBtn');
-    const pauseBtn = document.getElementById('pauseBtn');
+    function configurarVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false
+        document.querySelector(`[as-play=${id}]`).onclick = e => video.play()
+        document.querySelector(`[as-pause=${id}]`).onclick = e => video.pause()
 
-    playBtn.addEventListener('click', function () {
-        if (video.paused) {
-            video.play();
-            playBtn.textContent = 'Pause';
-        } else {
-            video.pause();
-            playBtn.textContent = 'Play';
-        }
-    });
-
-    pauseBtn.addEventListener('click', function () {
-        video.pause();
-        playBtn.textContent = 'Play'; // Altera o texto do botão de play caso o vídeo seja pausado
-    });
+        setInterval(() => {
+            const percentual = (video.currentTime / video.duration) * 100
+            const valorDiv = document.querySelector(`[as-progresso=${id}]>div`)
+            valorDiv.style.width = `${percentual}%`
+            valorDiv.innerHTML = `${percentual.toFixed(0)}%`
+        }, 10)
+    }
+    configurarVideo('meuVideo')
 </script>
