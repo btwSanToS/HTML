@@ -4,12 +4,11 @@
 </video>
 
 <div as-progresso="meuVideo" class="progresso">
-    <div>
-    </div>
+    <div></div>
 </div>
-<div>
-    <button as-play="meuVideo">Play</button>
-    <button as-pause="meuVideo">Pause</button>
+<div class="btn">
+    <button id="playBtn" as-play="meuVideo">Play</button>
+    <button id="pauseBtn" as-pause="meuVideo">Pause</button>
 </div>
 <style>
     .progresso {
@@ -19,12 +18,33 @@
         margin: 100px;
     }
 
-    .progresso > div{
+    .progresso>div {
         background-color: red;
-        color: white  ;
+        color: white;
         height: 100%;
         text-align: center;
         font-size: 14px;
         width: 30%;
     }
 </style>
+
+<script>
+    const video = document.getElementById('meuVideo');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    playBtn.addEventListener('click', function () {
+        if (video.paused) {
+            video.play();
+            playBtn.textContent = 'Pause';
+        } else {
+            video.pause();
+            playBtn.textContent = 'Play';
+        }
+    });
+
+    pauseBtn.addEventListener('click', function () {
+        video.pause();
+        playBtn.textContent = 'Play'; // Altera o texto do botão de play caso o vídeo seja pausado
+    });
+</script>
